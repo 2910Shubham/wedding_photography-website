@@ -324,6 +324,40 @@
         <script src="lib/lightbox/js/lightbox.min.js"></script>
 
         <!-- Main Javascript -->
+        <script>
+            // Define IDs for each button
+            const buttonIds = [
+                "book-wedding",
+                "book-engagement",
+                "book-anniversary",
+                "book-party",
+                "book-festival",
+                "book-birthday"
+            ];
+        
+            // Loop through IDs and attach click event listeners
+            buttonIds.forEach(id => {
+                const button = document.getElementById(id);
+                if (button) {
+                    button.addEventListener('click', function (event) {
+                        event.preventDefault(); // Prevent the default action
+        
+                        // Get the event name from the data-event attribute
+                        const eventName = button.getAttribute('data-event');
+        
+                        // Construct the pre-written message
+                        const message = `I want to book "${eventName}" and would like to know further details.`;
+        
+                        // Encode the message to be URL-safe
+                        const encodedMessage = encodeURIComponent(message);
+        
+                        // Redirect to WhatsApp with the pre-filled message
+                        window.open(`https://wa.me/919508351404?text=${encodedMessage}`, '_blank');
+                    });
+                }
+            });
+        </script>
+        
         <script src="js/main.js"></script>
 
     </body>
